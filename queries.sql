@@ -17,3 +17,13 @@ select o.Quantity, p.ProductName from OrderDetail as o join Product as p on o.Pr
 select o.Id as OrderId, c.CompanyName as CustomersCompanyName, e.LastName as EmployeesLastName from [order] as o
 join Customer as c on o.CustomerId = c.Id 
 join Employee as e on e.Id= o.EmployeeId;
+
+-- Stretch Problems
+
+-- Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 8 records.
+
+SELECT CategoryName, count(p.CategoryID) as CategoryCount FROM [Products] AS p JOIN Categories AS c ON p.CategoryID = c.CategoryID  GROUP BY p.CategoryID
+
+-- Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records
+
+SELECT o.OrderID, count(od.Quantity) AS ItemCount FROM [Orders] as o JOIN OrderDetails AS od ON od.OrderID = o.OrderID GROUP BY o.OrderID
