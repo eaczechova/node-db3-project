@@ -31,6 +31,13 @@ function findSteps(id) {
 		.where({ scheme_id: id });
 }
 
+function addStep(step, id) {
+	return db('steps')
+		.join('schemes as s', 's.id', 'steps.scheme_id')
+		.insert(step)
+		.where({ scheme_id: id });
+}
+
 module.exports = {
 	find,
 	findById,
@@ -38,4 +45,5 @@ module.exports = {
 	update,
 	remove,
 	findSteps,
+	addStep,
 };
